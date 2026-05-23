@@ -1,0 +1,227 @@
+
+<style>
+  .screens { display: flex; gap: 16px; padding: 1.5rem; background: #e8e8e8; border-radius: 16px; overflow-x: auto; flex-wrap: nowrap; justify-content: center; }
+  .phone { width: 180px; flex-shrink: 0; background: #fff; border-radius: 28px; overflow: hidden; border: 6px solid #222; font-family: var(--font-sans); font-size: 11px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  .notch { background: #222; height: 20px; display: flex; align-items: center; justify-content: center; }
+  .notch-pill { background: #444; width: 50px; height: 10px; border-radius: 5px; }
+  .screen-label { text-align: center; margin-top: 8px; font-size: 11px; color: #555; font-family: var(--font-sans); font-weight: 500; }
+
+  /* Colors */
+  .purple { background: #7F77DD; }
+  .purple-light { background: #EEEDFE; }
+  .teal { background: #1D9E75; }
+  .teal-light { background: #E1F5EE; }
+
+  /* Auth screens */
+  .auth-header { background: #7F77DD; padding: 24px 14px 16px; text-align: center; }
+  .auth-title { color: #fff; font-size: 15px; font-weight: 500; margin-bottom: 2px; }
+  .auth-sub { color: #CECBF6; font-size: 10px; }
+  .auth-body { padding: 14px; }
+  .auth-label { font-size: 9px; color: #888; margin-bottom: 3px; margin-top: 10px; }
+  .auth-input { background: #f5f5f5; border-radius: 6px; padding: 7px 8px; font-size: 10px; color: #555; margin-bottom: 2px; }
+  .auth-btn { background: #7F77DD; color: #fff; border-radius: 8px; padding: 8px; text-align: center; font-size: 11px; font-weight: 500; margin-top: 14px; }
+  .auth-link { text-align: center; color: #7F77DD; font-size: 9px; margin-top: 8px; }
+
+  /* Home screen */
+  .home-header { background: #7F77DD; padding: 16px 14px 12px; }
+  .home-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .home-greeting { color: #fff; font-size: 12px; font-weight: 500; }
+  .home-sub { color: #CECBF6; font-size: 9px; }
+  .home-avatar { width: 28px; height: 28px; border-radius: 50%; background: #AFA9EC; display: flex; align-items: center; justify-content: center; color: #26215C; font-size: 10px; font-weight: 500; }
+  .progress-bar-bg { background: rgba(255,255,255,0.3); border-radius: 4px; height: 6px; margin-top: 6px; }
+  .progress-bar-fill { background: #fff; border-radius: 4px; height: 6px; width: 60%; }
+  .progress-label { color: #CECBF6; font-size: 8px; margin-top: 3px; }
+  .home-body { padding: 10px 12px; }
+  .section-title { font-size: 10px; font-weight: 500; color: #333; margin-bottom: 8px; }
+  .habit-card { background: #EEEDFE; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; }
+  .habit-name { font-size: 10px; font-weight: 500; color: #3C3489; }
+  .habit-streak { font-size: 8px; color: #7F77DD; }
+  .check-circle { width: 18px; height: 18px; border-radius: 50%; background: #1D9E75; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 10px; flex-shrink: 0; }
+  .empty-circle { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #ccc; flex-shrink: 0; }
+  .fab { width: 32px; height: 32px; border-radius: 50%; background: #7F77DD; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px; margin: 8px auto 0; }
+  .bottom-nav { display: flex; justify-content: space-around; padding: 8px 0 4px; border-top: 0.5px solid #eee; }
+  .nav-icon { font-size: 16px; color: #ccc; }
+  .nav-icon.active { color: #7F77DD; }
+
+  /* Detail screen */
+  .detail-header { background: #7F77DD; padding: 14px; text-align: center; }
+  .detail-title { color: #fff; font-size: 13px; font-weight: 500; }
+  .detail-sub { color: #CECBF6; font-size: 9px; margin-top: 2px; }
+  .detail-body { padding: 10px 12px; }
+  .stat-row { display: flex; gap: 6px; margin-bottom: 10px; }
+  .stat-card { flex: 1; background: #EEEDFE; border-radius: 8px; padding: 8px 6px; text-align: center; }
+  .stat-val { font-size: 14px; font-weight: 500; color: #534AB7; }
+  .stat-lbl { font-size: 8px; color: #7F77DD; margin-top: 2px; }
+  .cal-row { display: flex; gap: 3px; margin-bottom: 10px; flex-wrap: wrap; }
+  .cal-day { width: 18px; height: 18px; border-radius: 4px; background: #EEEDFE; display: flex; align-items: center; justify-content: center; font-size: 7px; color: #7F77DD; }
+  .cal-day.done { background: #1D9E75; color: #fff; }
+  .mark-btn { background: #1D9E75; color: #fff; border-radius: 8px; padding: 8px; text-align: center; font-size: 10px; font-weight: 500; margin-top: 4px; }
+
+  /* Profile screen */
+  .profile-header { background: #7F77DD; padding: 20px 14px 14px; text-align: center; }
+  .avatar-lg { width: 44px; height: 44px; border-radius: 50%; background: #AFA9EC; display: flex; align-items: center; justify-content: center; color: #26215C; font-size: 16px; font-weight: 500; margin: 0 auto 6px; }
+  .profile-name { color: #fff; font-size: 13px; font-weight: 500; }
+  .profile-email { color: #CECBF6; font-size: 9px; }
+  .profile-body { padding: 10px 12px; }
+  .menu-item { display: flex; align-items: center; justify-content: space-between; padding: 9px 0; border-bottom: 0.5px solid #f0f0f0; }
+  .menu-left { display: flex; align-items: center; gap: 8px; font-size: 10px; color: #333; }
+  .menu-icon { font-size: 14px; color: #7F77DD; }
+  .menu-arrow { font-size: 10px; color: #ccc; }
+  .back-btn { color: #CECBF6; font-size: 10px; margin-bottom: 4px; display: inline-block; }
+</style>
+
+<div class="screens">
+
+  <!-- Login -->
+  <div>
+    <div class="phone">
+      <div class="notch"><div class="notch-pill"></div></div>
+      <div class="auth-header">
+        <div style="font-size:24px; margin-bottom:6px;">✦</div>
+        <div class="auth-title">Welcome back</div>
+        <div class="auth-sub">Sign in to your account</div>
+      </div>
+      <div class="auth-body">
+        <div class="auth-label">Email</div>
+        <div class="auth-input">user@email.com</div>
+        <div class="auth-label">Password</div>
+        <div class="auth-input">••••••••</div>
+        <div class="auth-btn">Sign in</div>
+        <div class="auth-link">Forgot password?</div>
+        <div class="auth-link" style="margin-top:12px;">Don't have an account? <span style="font-weight:500;">Register</span></div>
+      </div>
+    </div>
+    <div class="screen-label">Login</div>
+  </div>
+
+  <!-- Registration -->
+  <div>
+    <div class="phone">
+      <div class="notch"><div class="notch-pill"></div></div>
+      <div class="auth-header">
+        <div style="font-size:24px; margin-bottom:6px;">✦</div>
+        <div class="auth-title">Create account</div>
+        <div class="auth-sub">Start tracking your habits</div>
+      </div>
+      <div class="auth-body">
+        <div class="auth-label">Full name</div>
+        <div class="auth-input">John Doe</div>
+        <div class="auth-label">Email</div>
+        <div class="auth-input">user@email.com</div>
+        <div class="auth-label">Password</div>
+        <div class="auth-input">••••••••</div>
+        <div class="auth-label">Confirm password</div>
+        <div class="auth-input">••••••••</div>
+        <div class="auth-btn">Create account</div>
+        <div class="auth-link" style="margin-top:8px;">Already have an account? <span style="font-weight:500;">Sign in</span></div>
+      </div>
+    </div>
+    <div class="screen-label">Registration</div>
+  </div>
+
+  <!-- Home -->
+  <div>
+    <div class="phone">
+      <div class="notch"><div class="notch-pill"></div></div>
+      <div class="home-header">
+        <div class="home-top">
+          <div>
+            <div class="home-greeting">Good morning, John</div>
+            <div class="home-sub">3 of 5 habits done today</div>
+          </div>
+          <div class="home-avatar">JD</div>
+        </div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill"></div></div>
+        <div class="progress-label">60% complete</div>
+      </div>
+      <div class="home-body">
+        <div class="section-title">Today's habits</div>
+        <div class="habit-card">
+          <div><div class="habit-name">Morning run</div><div class="habit-streak">7 day streak</div></div>
+          <div class="check-circle">✓</div>
+        </div>
+        <div class="habit-card">
+          <div><div class="habit-name">Read 30 mins</div><div class="habit-streak">3 day streak</div></div>
+          <div class="check-circle">✓</div>
+        </div>
+        <div class="habit-card" style="background:#f5f5f5;">
+          <div><div class="habit-name" style="color:#555;">Meditate</div><div class="habit-streak" style="color:#aaa;">0 day streak</div></div>
+          <div class="empty-circle"></div>
+        </div>
+        <div class="habit-card" style="background:#f5f5f5;">
+          <div><div class="habit-name" style="color:#555;">Drink water</div><div class="habit-streak" style="color:#aaa;">1 day streak</div></div>
+          <div class="empty-circle"></div>
+        </div>
+        <div class="fab">+</div>
+      </div>
+      <div class="bottom-nav">
+        <i class="ti ti-home nav-icon active" aria-hidden="true"></i>
+        <i class="ti ti-chart-bar nav-icon" aria-hidden="true"></i>
+        <i class="ti ti-heart nav-icon" aria-hidden="true"></i>
+        <i class="ti ti-user nav-icon" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="screen-label">Home</div>
+  </div>
+
+  <!-- Detail -->
+  <div>
+    <div class="phone">
+      <div class="notch"><div class="notch-pill"></div></div>
+      <div class="detail-header">
+        <div class="back-btn">← back</div>
+        <div class="detail-title">Morning run</div>
+        <div class="detail-sub">Daily · Health & Fitness</div>
+      </div>
+      <div class="detail-body">
+        <div class="stat-row">
+          <div class="stat-card"><div class="stat-val">7</div><div class="stat-lbl">Day streak</div></div>
+          <div class="stat-card"><div class="stat-val">24</div><div class="stat-lbl">Total done</div></div>
+          <div class="stat-card"><div class="stat-val">80%</div><div class="stat-lbl">Completion</div></div>
+        </div>
+        <div class="section-title">This month</div>
+        <div class="cal-row">
+          <div class="cal-day done">1</div><div class="cal-day done">2</div><div class="cal-day">3</div>
+          <div class="cal-day done">4</div><div class="cal-day done">5</div><div class="cal-day done">6</div>
+          <div class="cal-day done">7</div><div class="cal-day">8</div><div class="cal-day done">9</div>
+          <div class="cal-day done">10</div><div class="cal-day">11</div><div class="cal-day done">12</div>
+          <div class="cal-day done">13</div><div class="cal-day done">14</div><div class="cal-day">15</div>
+        </div>
+        <div class="section-title" style="margin-top:6px;">Reminder</div>
+        <div class="habit-card"><div class="habit-name">6:30 AM daily</div><i class="ti ti-bell" style="font-size:13px;color:#7F77DD;" aria-hidden="true"></i></div>
+        <div class="mark-btn">Mark as done today</div>
+      </div>
+    </div>
+    <div class="screen-label">Detail</div>
+  </div>
+
+  <!-- Profile/Favorites -->
+  <div>
+    <div class="phone">
+      <div class="notch"><div class="notch-pill"></div></div>
+      <div class="profile-header">
+        <div class="avatar-lg">JD</div>
+        <div class="profile-name">John Doe</div>
+        <div class="profile-email">john@email.com</div>
+      </div>
+      <div class="profile-body">
+        <div class="section-title">Favourite habits</div>
+        <div class="habit-card" style="margin-bottom:6px;">
+          <div><div class="habit-name">Morning run</div><div class="habit-streak">7 day streak</div></div>
+          <i class="ti ti-heart" style="font-size:14px;color:#D4537E;" aria-hidden="true"></i>
+        </div>
+        <div class="habit-card" style="margin-bottom:10px;">
+          <div><div class="habit-name">Read 30 mins</div><div class="habit-streak">3 day streak</div></div>
+          <i class="ti ti-heart" style="font-size:14px;color:#D4537E;" aria-hidden="true"></i>
+        </div>
+        <div class="section-title">Settings</div>
+        <div class="menu-item"><div class="menu-left"><i class="ti ti-bell menu-icon" aria-hidden="true"></i>Notifications</div><span class="menu-arrow">›</span></div>
+        <div class="menu-item"><div class="menu-left"><i class="ti ti-moon menu-icon" aria-hidden="true"></i>Dark mode</div><span class="menu-arrow">›</span></div>
+        <div class="menu-item"><div class="menu-left"><i class="ti ti-lock menu-icon" aria-hidden="true"></i>Privacy</div><span class="menu-arrow">›</span></div>
+        <div class="menu-item" style="border:none;"><div class="menu-left" style="color:#E24B4A;"><i class="ti ti-logout" style="font-size:14px;color:#E24B4A;" aria-hidden="true"></i>Sign out</div></div>
+      </div>
+    </div>
+    <div class="screen-label">Favorites / Profile</div>
+  </div>
+
+</div>
